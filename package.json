@@ -1,0 +1,8 @@
+{
+  "name": "simpleprocess-io",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve . -p 8082",
+    "deploy": "npx wrangler pages deploy . --project-name=simpleprocess-io"
+  }
+}

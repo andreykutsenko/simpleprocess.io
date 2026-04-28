@@ -1,0 +1,21 @@
+{
+  "result": {
+    "id": "db705c13-aa45-4ce0-b132-50867f6e2c72",
+    "domain_id": "db705c13-aa45-4ce0-b132-50867f6e2c72",
+    "name": "simpleprocess.io",
+    "status": "active",
+    "verification_data": {
+      "status": "active"
+    },
+    "validation_data": {
+      "status": "active",
+      "method": "http"
+    },
+    "certificate_authority": "google",
+    "zone_tag": "51ec2e0bedd968d20bdf62438e4bcc5e",
+    "created_on": "2026-04-28T14:39:33.097233Z"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}

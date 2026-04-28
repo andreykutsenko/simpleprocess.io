@@ -1,0 +1,194 @@
+{
+  "result": {
+    "id": "8f516f9e-2731-453d-b829-02e2c4c8fb21",
+    "name": "simpleprocess-io",
+    "subdomain": "simpleprocess-io.pages.dev",
+    "domains": [
+      "simpleprocess-io.pages.dev"
+    ],
+    "build_config": {
+      "destination_dir": "",
+      "web_analytics_tag": null,
+      "web_analytics_token": null
+    },
+    "deployment_configs": {
+      "preview": {
+        "env_vars": null,
+        "fail_open": true,
+        "always_use_latest_compatibility_date": false,
+        "compatibility_date": "2026-04-28",
+        "compatibility_flags": [],
+        "build_image_major_version": 3,
+        "usage_model": "standard"
+      },
+      "production": {
+        "env_vars": null,
+        "fail_open": true,
+        "always_use_latest_compatibility_date": false,
+        "compatibility_date": "2025-01-01",
+        "compatibility_flags": [],
+        "build_image_major_version": 3,
+        "usage_model": "standard",
+        "wrangler_config_hash": "af0c505d27debc2d5c421c10aaf055693c51e276061f579c9bd848d94e410f15"
+      }
+    },
+    "latest_deployment": {
+      "id": "45e2a8e1-2b66-4586-8fa5-e5b7b507947f",
+      "short_id": "45e2a8e1",
+      "project_id": "8f516f9e-2731-453d-b829-02e2c4c8fb21",
+      "project_name": "simpleprocess-io",
+      "environment": "production",
+      "url": "https://45e2a8e1.simpleprocess-io.pages.dev",
+      "created_on": "2026-04-28T14:23:39.031167Z",
+      "modified_on": "2026-04-28T14:23:41.469663Z",
+      "latest_stage": {
+        "name": "deploy",
+        "started_on": null,
+        "ended_on": "2026-04-28T14:23:41.469663Z",
+        "status": "success"
+      },
+      "deployment_trigger": {
+        "type": "ad_hoc",
+        "metadata": {
+          "branch": "main",
+          "commit_hash": "7adff3eee0761af1baf650bfb19980089835abb5",
+          "commit_message": "docs(proof-loop): add session handoff before resume\r\n\r\nCo-Authored-By: Claude Opus 4.7 (1M context) \u003cnoreply@anthropic.com\u003e",
+          "commit_dirty": true
+        }
+      },
+      "stages": [
+        {
+          "name": "queued",
+          "started_on": "2026-04-28T14:23:39.031167Z",
+          "ended_on": null,
+          "status": "active"
+        },
+        {
+          "name": "initialize",
+          "started_on": null,
+          "ended_on": null,
+          "status": "idle"
+        },
+        {
+          "name": "clone_repo",
+          "started_on": null,
+          "ended_on": null,
+          "status": "idle"
+        },
+        {
+          "name": "build",
+          "started_on": null,
+          "ended_on": null,
+          "status": "idle"
+        },
+        {
+          "name": "deploy",
+          "started_on": null,
+          "ended_on": "2026-04-28T14:23:41.469663Z",
+          "status": "success"
+        }
+      ],
+      "build_config": {
+        "build_command": null,
+        "destination_dir": "",
+        "build_caching": null,
+        "root_dir": null,
+        "web_analytics_tag": null,
+        "web_analytics_token": null
+      },
+      "env_vars": {},
+      "compatibility_date": "2025-01-01",
+      "compatibility_flags": [],
+      "build_image_major_version": 3,
+      "usage_model": "bundled",
+      "aliases": null,
+      "is_skipped": false,
+      "production_branch": "main",
+      "uses_functions": true
+    },
+    "canonical_deployment": {
+      "id": "45e2a8e1-2b66-4586-8fa5-e5b7b507947f",
+      "short_id": "45e2a8e1",
+      "project_id": "8f516f9e-2731-453d-b829-02e2c4c8fb21",
+      "project_name": "simpleprocess-io",
+      "environment": "production",
+      "url": "https://45e2a8e1.simpleprocess-io.pages.dev",
+      "created_on": "2026-04-28T14:23:39.031167Z",
+      "modified_on": "2026-04-28T14:23:41.469663Z",
+      "latest_stage": {
+        "name": "deploy",
+        "started_on": null,
+        "ended_on": "2026-04-28T14:23:41.469663Z",
+        "status": "success"
+      },
+      "deployment_trigger": {
+        "type": "ad_hoc",
+        "metadata": {
+          "branch": "main",
+          "commit_hash": "7adff3eee0761af1baf650bfb19980089835abb5",
+          "commit_message": "docs(proof-loop): add session handoff before resume\r\n\r\nCo-Authored-By: Claude Opus 4.7 (1M context) \u003cnoreply@anthropic.com\u003e",
+          "commit_dirty": true
+        }
+      },
+      "stages": [
+        {
+          "name": "queued",
+          "started_on": "2026-04-28T14:23:39.031167Z",
+          "ended_on": null,
+          "status": "active"
+        },
+        {
+          "name": "initialize",
+          "started_on": null,
+          "ended_on": null,
+          "status": "idle"
+        },
+        {
+          "name": "clone_repo",
+          "started_on": null,
+          "ended_on": null,
+          "status": "idle"
+        },
+        {
+          "name": "build",
+          "started_on": null,
+          "ended_on": null,
+          "status": "idle"
+        },
+        {
+          "name": "deploy",
+          "started_on": null,
+          "ended_on": "2026-04-28T14:23:41.469663Z",
+          "status": "success"
+        }
+      ],
+      "build_config": {
+        "build_command": null,
+        "destination_dir": "",
+        "build_caching": null,
+        "root_dir": null,
+        "web_analytics_tag": null,
+        "web_analytics_token": null
+      },
+      "env_vars": {},
+      "compatibility_date": "2025-01-01",
+      "compatibility_flags": [],
+      "build_image_major_version": 3,
+      "usage_model": "bundled",
+      "aliases": null,
+      "is_skipped": false,
+      "production_branch": "main",
+      "uses_functions": true
+    },
+    "created_on": "2026-04-28T14:20:51.165673Z",
+    "production_branch": "main",
+    "production_script_name": "pages-worker--13248477-production",
+    "preview_script_name": "pages-worker--13248477-preview",
+    "uses_functions": true,
+    "framework": "",
+    "framework_version": ""
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}

@@ -1,0 +1,21 @@
+{
+  "result": {
+    "id": "7d1d6fa4-b7a0-4c6e-aba3-86eecf31785f",
+    "domain_id": "7d1d6fa4-b7a0-4c6e-aba3-86eecf31785f",
+    "name": "www.simpleprocess.io",
+    "status": "initializing",
+    "verification_data": {
+      "status": "pending"
+    },
+    "validation_data": {
+      "status": "initializing",
+      "method": "http"
+    },
+    "certificate_authority": "google",
+    "zone_tag": "51ec2e0bedd968d20bdf62438e4bcc5e",
+    "created_on": "2026-04-28T14:39:33.961177Z"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}

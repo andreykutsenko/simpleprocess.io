@@ -1,0 +1,5 @@
+HTTP/2 200 
+date: Tue, 28 Apr 2026 14:46:36 GMT
+content-type: text/html; charset=utf-8
+access-control-allow-origin: *
+cache-control: public, max-age=0, must-revalidate

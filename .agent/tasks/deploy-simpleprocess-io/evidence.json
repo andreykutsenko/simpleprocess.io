@@ -1,20 +1,184 @@
 {
   "task_id": "deploy-simpleprocess-io",
-  "overall_status": "UNKNOWN",
+  "overall_status": "PARTIAL",
+  "phase": "A_complete_B_deferred",
+  "last_updated": "2026-04-28T14:50:00Z",
   "acceptance_criteria": [
     {
       "id": "AC1",
-      "text": "TODO",
+      "text": "Pages project simpleprocess-io exists in account 57f2b31f...",
+      "status": "PASS",
+      "proof": ["raw/ac1-project.json", "raw/pages-project-create.json"],
+      "gaps": []
+    },
+    {
+      "id": "AC2",
+      "text": "Production deployment serves index.html with Tilda markers on simpleprocess-io.pages.dev",
+      "status": "PASS",
+      "proof": ["raw/deploy-clean.log", "raw/pages-dev-headers.txt", "raw/ac2-marker-count.txt"],
+      "gaps": []
+    },
+    {
+      "id": "AC3",
+      "text": "Vendored Tilda assets reachable from production deployment",
+      "status": "PASS",
+      "proof": ["raw/ac3-assets.txt"],
+      "gaps": []
+    },
+    {
+      "id": "AC4",
+      "text": "Custom domain simpleprocess.io active, HTTPS reachable, HTTP redirect",
+      "status": "PASS",
+      "proof": ["raw/ac-domain-simpleprocess_io.json", "raw/ac4-marker-count.txt", "raw/ac4-http-redirect.txt"],
+      "gaps": []
+    },
+    {
+      "id": "AC5",
+      "text": "Custom domain www.simpleprocess.io active, HTTPS reachable",
+      "status": "PASS",
+      "proof": ["raw/ac-domain-www_simpleprocess_io.json", "raw/ac5-marker-count.txt"],
+      "gaps": []
+    },
+    {
+      "id": "AC6",
+      "text": "Zone simpleprocess.io active, NS propagated to public resolvers",
+      "status": "PASS",
+      "proof": ["raw/ac6-zone.json", "raw/ac6-ns-1111.txt", "raw/ac6-ns-8888.txt"],
+      "gaps": []
+    },
+    {
+      "id": "AC7",
+      "text": "Apex and www DNS resolve to Pages-edge addresses, terminate on Cloudflare",
+      "status": "PASS",
+      "proof": ["raw/ac7-apex-a.txt", "raw/ac7-www-a.txt", "raw/ac7-resolve-test.txt", "raw/dns-create-apex.json", "raw/dns-create-www.json"],
+      "gaps": []
+    },
+    {
+      "id": "AC8",
+      "text": "Zoho MX records configured",
       "status": "UNKNOWN",
       "proof": [],
-      "gaps": [
-        "Not yet populated."
-      ]
+      "gaps": ["Phase B — Zoho onboarding pending."]
+    },
+    {
+      "id": "AC9",
+      "text": "Zoho SPF TXT record configured",
+      "status": "UNKNOWN",
+      "proof": [],
+      "gaps": ["Phase B."]
+    },
+    {
+      "id": "AC10",
+      "text": "Zoho DKIM record published and verified",
+      "status": "UNKNOWN",
+      "proof": [],
+      "gaps": ["Phase B."]
+    },
+    {
+      "id": "AC11",
+      "text": "Zoho domain ownership verification",
+      "status": "UNKNOWN",
+      "proof": [],
+      "gaps": ["Phase B."]
+    },
+    {
+      "id": "AC12",
+      "text": "DMARC record present",
+      "status": "UNKNOWN",
+      "proof": [],
+      "gaps": ["Phase B."]
+    },
+    {
+      "id": "AC13",
+      "text": "Telegram contact form works end-to-end",
+      "status": "UNKNOWN",
+      "proof": [],
+      "gaps": ["Phase B — Telegram bot token not recoverable from current state; Pages env vars TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID intentionally unset; functions/api/contact.js deploys but stays inert."]
+    },
+    {
+      "id": "AC14",
+      "text": "Pages production env vars TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID present",
+      "status": "UNKNOWN",
+      "proof": [],
+      "gaps": ["Phase B — intentionally unset."]
+    },
+    {
+      "id": "AC15",
+      "text": "Zoho mailbox sales@simpleprocess.io exists and is active",
+      "status": "UNKNOWN",
+      "proof": [],
+      "gaps": ["Phase B."]
+    },
+    {
+      "id": "AC16",
+      "text": "Inbound mail delivered to sales@simpleprocess.io",
+      "status": "UNKNOWN",
+      "proof": [],
+      "gaps": ["Phase B."]
+    },
+    {
+      "id": "AC17",
+      "text": "Outbound mail delivered with SPF/DKIM pass",
+      "status": "UNKNOWN",
+      "proof": [],
+      "gaps": ["Phase B."]
+    },
+    {
+      "id": "AC18",
+      "text": "simpleprocess.kutsenko.dev mirror non-regressed",
+      "status": "PASS",
+      "proof": ["raw/ac18-baseline.txt", "raw/ac18-current.txt", "raw/ac18-mirror-deployments.json"],
+      "gaps": ["sha256 baseline differs across consecutive fetches due to dynamic markup. Spec-defined fallback used: simpleprocess-mirror project's most recent deployment is 2026-02-05, predating spec freeze (2026-04-27)."]
+    },
+    {
+      "id": "AC19",
+      "text": "README documents full deploy + email runbook",
+      "status": "PASS",
+      "proof": ["raw/ac19-readme-keywords.txt"],
+      "gaps": []
+    },
+    {
+      "id": "AC20",
+      "text": ".env.example lists 5 required keys (placeholders only)",
+      "status": "PASS",
+      "proof": ["raw/ac20-env-example.txt"],
+      "gaps": []
+    },
+    {
+      "id": "AC21",
+      "text": "Repo state clean — no committed secrets, .env gitignored, GitHub remote canonical",
+      "status": "PASS",
+      "proof": ["raw/ac21-gitignore.txt", "raw/ac21-env-history.txt", "raw/ac21-remote.txt", "raw/ac21-secret-grep.txt", "raw/ac21-status.txt"],
+      "gaps": []
     }
   ],
-  "changed_files": [],
-  "commands_for_fresh_verifier": [],
+  "changed_files": [
+    "README.md",
+    ".env.example",
+    ".assetsignore",
+    ".agent/tasks/deploy-simpleprocess-io/evidence.md",
+    ".agent/tasks/deploy-simpleprocess-io/evidence.json",
+    ".agent/tasks/deploy-simpleprocess-io/verdict.json"
+  ],
+  "commands_for_fresh_verifier": [
+    "curl -sS -H \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/simpleprocess-io",
+    "curl -sSI https://simpleprocess.io/",
+    "curl -sSI http://simpleprocess.io/",
+    "curl -sSI https://www.simpleprocess.io/",
+    "curl -sS https://simpleprocess.io/ | grep -ciE 'tildacdn|t-records'",
+    "dig +short NS simpleprocess.io @1.1.1.1",
+    "dig +short A simpleprocess.io @1.1.1.1",
+    "dig +short A www.simpleprocess.io @1.1.1.1",
+    "curl -sS -H \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/simpleprocess-io/domains/simpleprocess.io",
+    "curl -sS -H \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/simpleprocess-io/domains/www.simpleprocess.io",
+    "grep -ciE 'cloudflare pages|zoho|telegram|dkim|spf|mx|dmarc|wrangler' README.md",
+    "grep -E '^(CLOUDFLARE_API_TOKEN|CLOUDFLARE_ACCOUNT_ID|CLOUDFLARE_ZONE_ID|TELEGRAM_BOT_TOKEN|TELEGRAM_CHAT_ID)=' .env.example | wc -l",
+    "git log --all --full-history -- .env",
+    "git remote get-url origin"
+  ],
   "known_gaps": [
-    "Evidence not yet populated."
+    "Phase B (AC8-AC17) intentionally deferred. Zoho Mail Free onboarding and Telegram bot recovery are user-blocking actions.",
+    "Initial dirty deploy briefly exposed .env via Pages preview URL; mitigated by clean redeploy + dirty-deployment delete + Cloudflare API token rotation by user.",
+    "package.json `npm run deploy` script (`wrangler pages deploy .`) would re-introduce the leak. Should be updated to deploy from a clean dist directory; tracked in README. Not changed in Phase A to keep the diff scoped to spec deliverables."
   ]
 }

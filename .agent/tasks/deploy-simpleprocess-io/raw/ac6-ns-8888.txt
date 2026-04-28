@@ -1,0 +1,2 @@
+nancy.ns.cloudflare.com.
+dean.ns.cloudflare.com.

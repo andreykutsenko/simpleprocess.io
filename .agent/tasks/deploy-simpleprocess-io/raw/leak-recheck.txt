@@ -1,0 +1,12 @@
+200  /.env
+200  /.env.example
+200  /CLAUDE.md
+200  /wrangler.toml
+200  /package.json
+200  /.git/config
+200  /.agent/tasks/deploy-simpleprocess-io/spec.md
+200  /.gitignore
+200  /.assetsignore
+HTTP/2 200 
+date: Tue, 28 Apr 2026 14:23:57 GMT
+content-type: text/html; charset=utf-8

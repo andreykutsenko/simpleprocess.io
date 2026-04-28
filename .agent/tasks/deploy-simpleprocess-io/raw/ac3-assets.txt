@@ -1,0 +1,12 @@
+--- https://simpleprocess-io.pages.dev/static.tildacdn.one/js/tilda-forms-1.0.min.js ---
+HTTP/2 200 
+date: Tue, 28 Apr 2026 14:42:36 GMT
+content-type: application/javascript
+--- https://simpleprocess-io.pages.dev/thb.tildacdn.one/tild6637-3436-4337-b163-396636386561/-/empty/x1600_adc85e33ca.jpg ---
+HTTP/2 200 
+date: Tue, 28 Apr 2026 14:42:36 GMT
+content-type: image/jpeg
+--- https://simpleprocess-io.pages.dev/neo.tildacdn.com/js/tilda-fallback-1.0.min.js ---
+HTTP/2 200 
+date: Tue, 28 Apr 2026 14:42:36 GMT
+content-type: application/javascript

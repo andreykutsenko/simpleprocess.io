@@ -1,0 +1,99 @@
+{
+  "result": [
+    {
+      "id": "55c9d617-229d-42ce-9a01-712f371d4603",
+      "short_id": "55c9d617",
+      "project_id": "9b686972-028d-4f68-976f-d168bed8fb89",
+      "project_name": "simpleprocess-mirror",
+      "environment": "production",
+      "url": "https://55c9d617.simpleprocess-mirror.pages.dev",
+      "created_on": "2026-02-05T07:37:18.645512Z",
+      "modified_on": "2026-02-05T07:37:44.880388Z",
+      "latest_stage": {
+        "name": "deploy",
+        "started_on": "2026-02-05T07:37:29.960581Z",
+        "ended_on": "2026-02-05T07:37:44.880388Z",
+        "status": "success"
+      },
+      "deployment_trigger": {
+        "type": "ad_hoc",
+        "metadata": {
+          "branch": "main",
+          "commit_hash": "56349ce5261dd8476eb878a70e9ff2c46d5b0518",
+          "commit_message": "fix: complete mirror with all missing assets and fixes\n\nImages:\n- Add 40 missing SVG icons and decorative elements\n- Includes service icons, yellow curved lines, arrows, logos\n\nFunctionality:\n- Fix slider navigation (Our Services, Reviews)\n- Fix Contact popup links\n- Fix form submission to always show success\n- Hide PL language switcher (subdomain unavailable)\n- Update address to 150 Lombard St, #505 San Francisco, CA 94111\n\nCo-Authored-By: Claude Opus 4.5 \u003cnoreply@anthropic.com\u003e",
+          "commit_dirty": false
+        }
+      },
+      "stages": [
+        {
+          "name": "queued",
+          "started_on": "2026-02-05T07:37:19.0583Z",
+          "ended_on": "2026-02-05T07:37:19.0583Z",
+          "status": "success"
+        },
+        {
+          "name": "initialize",
+          "started_on": "2026-02-05T07:37:19.0583Z",
+          "ended_on": "2026-02-05T07:37:21.267296Z",
+          "status": "success"
+        },
+        {
+          "name": "clone_repo",
+          "started_on": "2026-02-05T07:37:21.267296Z",
+          "ended_on": "2026-02-05T07:37:23.18928Z",
+          "status": "success"
+        },
+        {
+          "name": "build",
+          "started_on": "2026-02-05T07:37:23.18928Z",
+          "ended_on": "2026-02-05T07:37:29.960581Z",
+          "status": "success"
+        },
+        {
+          "name": "deploy",
+          "started_on": "2026-02-05T07:37:29.960581Z",
+          "ended_on": "2026-02-05T07:37:44.880388Z",
+          "status": "success"
+        }
+      ],
+      "build_config": {
+        "build_command": "",
+        "destination_dir": "",
+        "build_caching": null,
+        "root_dir": "sites/simpleprocess",
+        "web_analytics_tag": null,
+        "web_analytics_token": null
+      },
+      "source": {
+        "type": "github",
+        "config": {
+          "owner": "andreykutsenko",
+          "repo_name": "kutsenko.dev",
+          "production_branch": "main",
+          "pr_comments_enabled": false
+        }
+      },
+      "env_vars": {},
+      "compatibility_date": "2026-02-05",
+      "compatibility_flags": [],
+      "build_image_major_version": 3,
+      "usage_model": "bundled",
+      "aliases": [
+        "https://simpleprocess.kutsenko.dev"
+      ],
+      "is_skipped": false,
+      "production_branch": "main",
+      "uses_functions": true
+    }
+  ],
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result_info": {
+    "page": 1,
+    "per_page": 25,
+    "count": 1,
+    "total_count": 1,
+    "total_pages": 1
+  }
+}

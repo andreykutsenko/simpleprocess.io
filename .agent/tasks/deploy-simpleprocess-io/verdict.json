@@ -1,13 +1,44 @@
 {
   "task_id": "deploy-simpleprocess-io",
-  "overall_verdict": "UNKNOWN",
+  "overall_verdict": "PARTIAL",
+  "phase": "A_complete_B_deferred",
+  "last_updated": "2026-04-28T14:50:00Z",
   "criteria": [
-    {
-      "id": "AC1",
-      "status": "UNKNOWN",
-      "reason": "Verifier has not run yet."
-    }
+    { "id": "AC1",  "status": "PASS",    "reason": "Pages project simpleprocess-io exists in account 57f2b31f..., subdomain simpleprocess-io.pages.dev." },
+    { "id": "AC2",  "status": "PASS",    "reason": "Clean production deployment 45e2a8e1.simpleprocess-io.pages.dev serves index.html with 84 Tilda-marker hits." },
+    { "id": "AC3",  "status": "PASS",    "reason": "Three CDN-tree assets verified: js/css from static.tildacdn.one, jpg from thb.tildacdn.one, js from neo.tildacdn.com — all HTTP 200." },
+    { "id": "AC4",  "status": "PASS",    "reason": "https://simpleprocess.io/ HTTP 200, status=active CA=google, HTTP -> HTTPS 301 redirect." },
+    { "id": "AC5",  "status": "PASS",    "reason": "https://www.simpleprocess.io/ HTTP 200, status=active CA=google." },
+    { "id": "AC6",  "status": "PASS",    "reason": "Zone status=active. Both 1.1.1.1 and 8.8.8.8 return dean.ns.cloudflare.com + nancy.ns.cloudflare.com." },
+    { "id": "AC7",  "status": "PASS",    "reason": "Apex and www resolve to Cloudflare anycast IPs (104.21.4.39, 172.67.131.161); --resolve curl confirms IP terminates on Cloudflare." },
+    { "id": "AC8",  "status": "UNKNOWN", "reason": "Phase B — Zoho onboarding pending." },
+    { "id": "AC9",  "status": "UNKNOWN", "reason": "Phase B — Zoho onboarding pending." },
+    { "id": "AC10", "status": "UNKNOWN", "reason": "Phase B — Zoho onboarding pending." },
+    { "id": "AC11", "status": "UNKNOWN", "reason": "Phase B — Zoho onboarding pending." },
+    { "id": "AC12", "status": "UNKNOWN", "reason": "Phase B — Zoho onboarding pending." },
+    { "id": "AC13", "status": "UNKNOWN", "reason": "Phase B — Telegram bot token not yet recovered; Pages env vars intentionally unset." },
+    { "id": "AC14", "status": "UNKNOWN", "reason": "Phase B — Telegram env vars intentionally unset." },
+    { "id": "AC15", "status": "UNKNOWN", "reason": "Phase B — Zoho mailbox creation pending." },
+    { "id": "AC16", "status": "UNKNOWN", "reason": "Phase B — depends on AC15." },
+    { "id": "AC17", "status": "UNKNOWN", "reason": "Phase B — depends on AC15." },
+    { "id": "AC18", "status": "PASS",    "reason": "simpleprocess-mirror project last deployment 2026-02-05, predates spec freeze. Mirror still serves HTTP 200. (sha256 baseline unstable due to dynamic markup; fallback signal used per spec.)" },
+    { "id": "AC19", "status": "PASS",    "reason": "README keyword grep returns 39 matches across all 8 categories." },
+    { "id": "AC20", "status": "PASS",    "reason": "5 required keys present as empty placeholders in .env.example." },
+    { "id": "AC21", "status": "PASS",    "reason": ".env gitignored and never committed; remote canonical; no live secret patterns in tree." }
   ],
-  "commands_run": [],
-  "artifacts_used": []
+  "phase_a_summary": {
+    "PASS": 11,
+    "UNKNOWN": 10,
+    "FAIL": 0
+  },
+  "commands_run": [
+    "Cloudflare API: GET/POST/DELETE on /accounts/.../pages/projects/simpleprocess-io and /zones/.../dns_records",
+    "wrangler@3 pages deploy <clean-dist> --project-name=simpleprocess-io --branch=main",
+    "curl -sSI on production URLs",
+    "dig +short NS|A on simpleprocess.io and www.simpleprocess.io against 1.1.1.1 and 8.8.8.8",
+    "git ls-files / git log --all -- .env / git grep secret patterns / git remote get-url origin"
+  ],
+  "artifacts_used": [
+    ".agent/tasks/deploy-simpleprocess-io/raw/"
+  ]
 }

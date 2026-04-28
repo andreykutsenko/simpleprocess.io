@@ -1,0 +1,5 @@
+HTTP/1.1 301 Moved Permanently
+Date: Tue, 28 Apr 2026 14:42:13 GMT
+Connection: keep-alive
+Location: https://simpleprocess.io/
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=QM9n3CTc1L43D%2FyvGdM39N1jCwZLg5MaFTV7btU97159mG33hRW%2B8kSCbhXYF1gtHv8Dw2Gsg5pXVFGcI8mD2N%2FgyVw29hE72wO9q4m1VxN4tqErTttOKgvn0dEc7G1Ok34%2F8cZgJXJNcb7nbxAz"}]}

@@ -1,0 +1,59 @@
+# Task Spec: deploy-simpleprocess-io
+
+## Metadata
+- Task ID: deploy-simpleprocess-io
+- Created: 2026-04-28T03:14:57+00:00
+- Repo root: /home/kts/code/simpleprocess.io
+- Working directory at init: /home/kts/code/simpleprocess.io
+
+## Guidance sources
+- CLAUDE.md
+
+## Original task statement
+# Task: Deploy simpleprocess.io to Cloudflare Pages with Zoho mailbox
+
+Deploy the static mirror of simpleprocess.io (already vendored in this repo) as a brand-new
+Cloudflare Pages project so that the production domain `simpleprocess.io` (and `www.simpleprocess.io`)
+serves it over HTTPS, the Telegram contact form keeps working, and a real mailbox at
+`sales@simpleprocess.io` exists on Zoho Mail Free (with MX/TXT/DKIM/SPF records configured in
+Cloudflare DNS for `simpleprocess.io`).
+
+## Context already established
+- New repo: `/home/kts/code/simpleprocess.io/` (this directory).
+- Site contents copied from `/home/kts/code/kutsenko.dev/sites/simpleprocess/`.
+- Cloudflare account `57f2b31f16b4e1bd9988bd7e091b8a2a`.
+- Zone `simpleprocess.io` already added to Cloudflare (id `51ec2e0bedd968d20bdf62438e4bcc5e`),
+  status currently pending; nameservers `dean.ns.cloudflare.com`, `nancy.ns.cloudflare.com`.
+- User changed (or will change) NS at GoDaddy to those Cloudflare nameservers.
+- API token + ids are in `.env` (gitignored).
+- Existing mirror `simpleprocess.kutsenko.dev` (Pages project `simpleprocess-mirror` in the
+  kutsenko.dev repo) must remain untouched and working.
+
+## Goals
+1. New Cloudflare Pages project `simpleprocess-io` deployed from this repo.
+2. Custom domains `simpleprocess.io` and `www.simpleprocess.io` attached, SSL active, HTTP→HTTPS.
+3. DNS in the new Cloudflare zone configured: apex + www → Pages, plus Zoho MX/SPF/DKIM/CNAME for
+   verification, plus any records the Pages project needs.
+4. Telegram contact form (`/api/contact`) works on production with secrets set in Pages env.
+5. Zoho Mail Free signed up on this domain, mailbox `sales@simpleprocess.io` created and verified;
+   able to send and receive mail at that address.
+6. README updated with full deploy & email runbook; `.env.example` updated with all needed vars.
+7. Proof-loop evidence captures: Pages deploy URL, curl checks for HTML/assets/api, dig output for
+   A/AAAA/CNAME/MX/TXT, DKIM verification, a successful test email, and a screenshot of the
+   production page.
+
+## Acceptance criteria
+- AC1: TODO
+
+## Constraints
+- TODO
+
+## Non-goals
+- TODO
+
+## Verification plan
+- Build:
+- Unit tests:
+- Integration tests:
+- Lint:
+- Manual checks:

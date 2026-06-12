@@ -1041,78 +1041,64 @@ setTimeout(function(){ (function (d, w, k, o, g) { var n=d.getElementsByTagName(
 <!-- Custom form handler - sends to /api/contact instead of Tilda -->
 <script>
 (function() {
-  // Override Tilda form submission
-  var originalFetch = window.fetch;
-  window.fetch = function(url, options) {
-    // Intercept Tilda form submissions
-    if (url && typeof url === 'string' && url.includes('tildacdn.com')) {
-      return Promise.resolve(new Response(JSON.stringify({success: true}), {status: 200}));
-    }
-    return originalFetch.apply(this, arguments);
-  };
+  // The page's Tilda forms still post to the expired forms.tildacdn.com,
+  // which answers with a "subscription expired" error. Patching fetch/XHR is
+  // unreliable here (Tilda Forms 2.0 bypasses it), so instead we intercept the
+  // submit action before Tilda handles it, stop it, and deliver the data to
+  // our own /api/contact endpoint.
 
-  // Tilda also submits via XMLHttpRequest to forms*.tildacdn.com, whose dead
-  // subscription returns an error that Tilda renders as a "subscription
-  // expired" box. Redirect those posts to an inert same-origin endpoint so no
-  // Tilda error is shown; real delivery runs through /api/contact below.
-  var originalOpen = XMLHttpRequest.prototype.open;
-  XMLHttpRequest.prototype.open = function(method, url) {
-    var args = [].slice.call(arguments);
-    if (typeof url === 'string' && /forms\d*\.tildacdn\.com/.test(url)) {
-      args[0] = 'POST';
-      args[1] = '/api/tilda-noop';
+  function getValue(form, selectors) {
+    for (var i = 0; i < selectors.length; i++) {
+      var el = form.querySelector(selectors[i]);
+      if (el && el.value) return el.value;
     }
-    return originalOpen.apply(this, args);
-  };
+    return '';
+  }
 
-  // Handle form submissions
-  document.addEventListener('submit', function(e) {
-    var form = e.target;
-    if (!form.classList.contains('t-form')) return;
+  function showSuccess(form) {
+    form.classList.add('js-send-form-success');
+    var successBox = form.querySelector('.t-form__successbox');
+    if (successBox) successBox.style.display = 'block';
+    var inputsBox = form.querySelector('.t-form__inputsbox');
+    if (inputsBox) inputsBox.style.display = 'none';
+    var submitBox = form.querySelector('.t-form__submit');
+    if (submitBox) submitBox.style.display = 'none';
+  }
+
+  function handleForm(form, e) {
+    if (form.dataset.spSubmitted === '1') return;
+    form.dataset.spSubmitted = '1';
 
     e.preventDefault();
-    e.stopPropagation();
+    e.stopImmediatePropagation();
 
-    var formData = new FormData(form);
-    var data = {};
-    formData.forEach(function(value, key) {
-      if (key === 'Name' || key === 'name') data.name = value;
-      if (key === 'Email' || key === 'email') data.email = value;
-      if (key === 'Details' || key === 'details' || key === 'textarea') data.details = value;
-    });
+    var data = {
+      name: getValue(form, ['input[name="Name"]', 'input[name="name"]']),
+      email: getValue(form, ['input[name="Email"]', 'input[name="email"]']),
+      phone: getValue(form, ['input[name="Phone"]', 'input[name="phone"]', 'input[type="tel"]']),
+      details: getValue(form, ['textarea[name="Details"]', 'textarea[name="details"]', 'textarea'])
+    };
 
-    // Also try to get values directly from inputs
-    var nameInput = form.querySelector('input[name="Name"], input[name="name"]');
-    var emailInput = form.querySelector('input[name="Email"], input[name="email"]');
-    var detailsInput = form.querySelector('textarea[name="Details"], textarea[name="details"], textarea');
-
-    if (nameInput && nameInput.value) data.name = nameInput.value;
-    if (emailInput && emailInput.value) data.email = emailInput.value;
-    if (detailsInput && detailsInput.value) data.details = detailsInput.value;
-
-    // Show success immediately (async send)
-    function showSuccess() {
-      form.classList.add('js-send-form-success');
-      var successBox = form.querySelector('.t-form__successbox');
-      if (successBox) {
-        successBox.style.display = 'block';
-      }
-      // Hide form fields
-      var formInputs = form.querySelector('.t-form__inputsbox');
-      if (formInputs) formInputs.style.display = 'none';
-      var formBtn = form.querySelector('.t-form__submit');
-      if (formBtn) formBtn.style.display = 'none';
-    }
-
-    // Send to our API (fire and forget, always show success)
     fetch('/api/contact', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(data)
     }).catch(function() {});
 
-    // Always show success after short delay
-    setTimeout(showSuccess, 300);
+    showSuccess(form);
+  }
+
+  // Capture phase so we run before Tilda's own click/submit handlers.
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest && e.target.closest('.t-submit');
+    if (!btn) return;
+    var form = btn.closest('form') || btn.closest('.t-form');
+    if (form) handleForm(form, e);
+  }, true);
+
+  document.addEventListener('submit', function(e) {
+    var form = e.target.closest ? e.target.closest('.t-form, form') : null;
+    if (form) handleForm(form, e);
   }, true);
 })();
 </script>

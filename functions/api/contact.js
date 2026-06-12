@@ -47,10 +47,11 @@ export async function onRequestPost(context) {
     const field = (value, maxLength) => String(value ?? '').slice(0, maxLength) || '-';
     const name = field(data.name, 200);
     const email = field(data.email, 200);
+    const phone = field(data.phone, 100);
     const details = field(data.details, 3000);
 
     // Format plain text message (Telegram hard limit is 4096 chars)
-    const message = `New contact form submission\n\nName: ${name}\nEmail: ${email}\nDetails: ${details}`;
+    const message = `New contact form submission\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nDetails: ${details}`;
 
     // Send to Telegram (fire and forget)
     const botToken = env.TELEGRAM_BOT_TOKEN;

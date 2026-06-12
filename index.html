@@ -1051,6 +1051,20 @@ setTimeout(function(){ (function (d, w, k, o, g) { var n=d.getElementsByTagName(
     return originalFetch.apply(this, arguments);
   };
 
+  // Tilda also submits via XMLHttpRequest to forms*.tildacdn.com, whose dead
+  // subscription returns an error that Tilda renders as a "subscription
+  // expired" box. Redirect those posts to an inert same-origin endpoint so no
+  // Tilda error is shown; real delivery runs through /api/contact below.
+  var originalOpen = XMLHttpRequest.prototype.open;
+  XMLHttpRequest.prototype.open = function(method, url) {
+    var args = [].slice.call(arguments);
+    if (typeof url === 'string' && /forms\d*\.tildacdn\.com/.test(url)) {
+      args[0] = 'POST';
+      args[1] = '/api/tilda-noop';
+    }
+    return originalOpen.apply(this, args);
+  };
+
   // Handle form submissions
   document.addEventListener('submit', function(e) {
     var form = e.target;
